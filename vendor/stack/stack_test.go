@@ -13,7 +13,7 @@ func Test(t *testing.T) {
 	stack.Push("Stuff")
 
 	fmt.Printf("%s ", stack.Pop().(string))
-	stack.Push(6.4)
+	stack.Push(6.4) // 此行报错，有待解决
 	for stack.Len() > 0 {
 		// We have to do a type assertion because we get back a variable of type
 		// interface{} while the underlying type is a string.
