@@ -1,5 +1,7 @@
 package stack
 
+import "fmt"
+
 type Stack struct {
 	top  *Element
 	size int
@@ -34,4 +36,14 @@ func (s *Stack) Pop() (value interface{}) {
 		return
 	}
 	return nil
+}
+
+// Foreach stack
+func (s *Stack) Foreach() {
+	for s.size > 0 {
+		value := s.top.value
+		s.top = s.top.next
+		fmt.Println(value)
+		s.size--
+	}
 }
