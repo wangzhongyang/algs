@@ -1,6 +1,8 @@
 package queue
 
-// 队列
+import "fmt"
+
+// 队列 有官方实现库
 type Queue struct {
 	first *Element
 	last  *Element
@@ -51,6 +53,7 @@ func (q *Queue) Dequeue() (interface{}, bool) {
 // Foreach queue
 func (q *Queue) Foreach() {
 	for q.Len() > 0 {
+		fmt.Println(q.first.value, "----")
 		q.first = q.first.next
 		q.size--
 	}

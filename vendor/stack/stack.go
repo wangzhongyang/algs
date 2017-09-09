@@ -34,14 +34,13 @@ func (s *Stack) Push(value interface{}) {
 
 // Remove the top element from the stack and return it's value
 // If the stack is empty, return nil
-func (s *Stack) Pop() (interface{}, bool) {
-	var value interface{}
+func (s *Stack) Pop() (value interface{}) {
 	if s.size > 0 {
 		value, s.top = s.top.value, s.top.next
 		s.size--
-		return value, true
+		return
 	}
-	return nil, false
+	return nil
 }
 
 // Foreach stack
