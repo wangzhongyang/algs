@@ -52,9 +52,10 @@ func (q *Queue) Dequeue() (interface{}, bool) {
 
 // Foreach queue
 func (q *Queue) Foreach() {
-	for q.Len() > 0 {
-		fmt.Println(q.first.value, "----")
-		q.first = q.first.next
-		q.size--
+	first, len := q.first, q.size
+	for len > 0 {
+		fmt.Println("遍历不改变结构：", first.value)
+		first = first.next
+		len--
 	}
 }

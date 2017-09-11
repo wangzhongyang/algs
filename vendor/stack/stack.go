@@ -45,10 +45,10 @@ func (s *Stack) Pop() (value interface{}) {
 
 // Foreach stack
 func (s *Stack) Foreach() {
-	for s.size > 0 {
-		value := s.top.value
-		s.top = s.top.next
-		fmt.Println(value)
-		s.size--
+	top, len := s.top, s.size
+	for len > 0 {
+		fmt.Println("取出数据，不改结构：", top.value)
+		top = top.next
+		len--
 	}
 }
