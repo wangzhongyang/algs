@@ -1,12 +1,12 @@
-package main
+package readFile
 
 import (
 	"fmt"
-	"readFile"
+	"testing"
 )
 
-func main() {
-	r, args := readFile.New(), []int{}
+func Test(t *testing.T) {
+	r, args := new(ReadFile), []int{}
 	file := "1kints.txt"
 	path, err := r.GetDataPath()
 	if err != nil {
