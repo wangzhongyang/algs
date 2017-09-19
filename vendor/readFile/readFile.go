@@ -33,6 +33,10 @@ func (r *ReadFile) GetDataPath() (string, error) {
 
 // get bufio reader
 func (r *ReadFile) read(path string) error {
+	if strings.Index(path, "algs") == -1 {
+		path1, _ := r.GetDataPath()
+		path = path1 + path
+	}
 	file = []interface{}{}
 	inputFile, err := os.Open(path)
 	if err != nil {
@@ -59,9 +63,13 @@ func (r *ReadFile) ReadToInt(path string, args *[]int) error {
 	for _, v := range file {
 		vStr := v.(string)
 		vStr = strings.Replace(vStr, "\n", "", -1) // 去除换行
-		vStr = strings.Replace(vStr, " ", "", -1)  // 去除空格
-		lineInt, _ := strconv.Atoi(vStr)
-		*args = append(*args, lineInt)
+		arr := strings.Split(vStr, " ")
+		for _, val := range arr {
+			if val != " " {
+				lineInt, _ := strconv.Atoi(val)
+				*args = append(*args, lineInt)
+			}
+		}
 	}
 	return nil
 }
