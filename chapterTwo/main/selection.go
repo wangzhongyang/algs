@@ -1,7 +1,7 @@
 // 选择排序
-// 特点:1、运行时间和输入无关
-// 	   2、数据移动最少
-// 时间复杂度:O(n^2)
+// 特点: 1、运行时间和输入无关
+// 	    2、数据移动最少
+// 复杂度: (n^2)/2次比较和n次交换
 package main
 
 import (
@@ -13,12 +13,13 @@ import (
 // Selection
 type Selection struct{}
 
-// New
-func New() *Selection {
+// NewSelection
+func NewSelection() *Selection {
 	return &Selection{}
 }
+
 func main() {
-	f, s, arr := readFile.New(), New(), []string{}
+	f, s, arr := readFile.New(), NewSelection(), []string{}
 	err := f.ReadToStrings("tiny.txt", &arr)
 	myError.New().Err(err, "读取文件失败")
 
