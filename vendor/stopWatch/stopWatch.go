@@ -33,7 +33,7 @@ func (s *StopWatch) Watch() {
 
 // LastTime 距离上次计时的时间
 func (s *StopWatch) LastTime() {
-	fmt.Println("程序距上次运行时间:	", time.Since(t))
+	fmt.Println("程序距上次运行时间:	", time.Since(last))
 	last = time.Now()
 }
 
