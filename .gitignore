@@ -1,2 +1,5 @@
 .idea
 data/algs4-data/*
+chapterOne/main/test.go
+!data/algs4-data/tinyUF.txt
+!data/algs4-data/mediumUF.txt
