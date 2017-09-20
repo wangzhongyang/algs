@@ -27,6 +27,9 @@ func (r *ReadFile) GetDataPath() (string, error) {
 		return filePath, err
 	}
 	end := strings.Index(filePath, "algs") + 5
+	if end > len(filePath) { // gogland 编译或调试时使用
+		return filePath + "/" + dataPath, nil
+	}
 	return filePath[:end] + dataPath, nil
 
 }
@@ -83,8 +86,26 @@ func (r *ReadFile) ReadToString(path string, args *[]string) error {
 	for _, v := range file {
 		vStr := v.(string)
 		vStr = strings.Replace(vStr, "\n", "", -1) // 去除换行
-		vStr = strings.Replace(vStr, " ", "", -1)  // 去除空格
 		*args = append(*args, vStr)
+	}
+	return nil
+}
+
+// ReadToStrings 以单个字母为元素的数组
+func (r *ReadFile) ReadToStrings(path string, args *[]string) error {
+	err := r.read(path)
+	if err != nil {
+		return err
+	}
+	for _, v := range file {
+		vStr := v.(string)
+		vStr = strings.Replace(vStr, "\n", "", -1) // 去除换行
+		arr := strings.Split(vStr, " ")
+		for _, val := range arr {
+			if val != " " {
+				*args = append(*args, val)
+			}
+		}
 	}
 	return nil
 }
