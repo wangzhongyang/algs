@@ -28,11 +28,16 @@ func init() {
 // Watch 距离开始运行的时间
 func (s *StopWatch) Watch() {
 	last = time.Now()
-	fmt.Println("程序运行时间:	", time.Since(t))
+	fmt.Println("程序距开始运行时间:	", time.Since(t))
 }
 
 // LastTime 距离上次计时的时间
 func (s *StopWatch) LastTime() {
-	fmt.Println("程序运行时间:	", time.Since(t))
+	fmt.Println("程序距上次运行时间:	", time.Since(t))
+	last = time.Now()
+}
+
+// Reset 重置计时时间
+func (s *StopWatch) Reset() {
 	last = time.Now()
 }
