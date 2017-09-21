@@ -15,7 +15,7 @@ func main() {
 	myError.New().Err(err, "读取文件失败")
 
 	Sort(&arr)
-	IsSorted(arr)
+	fmt.Println("是否为升序：", IsSorted(arr))
 	fmt.Println(arr)
 
 }
@@ -38,7 +38,7 @@ func Exch(args *[]string, p, q int) {
 // IsSorted
 func IsSorted(args []string) bool {
 	for i := 1; i < len(args); i++ {
-		if Less(args[i], args[i+1]) {
+		if Less(args[i], args[i-1]) {
 			return false
 		}
 	}
