@@ -2,4 +2,4 @@
 data/algs4-data/*
 !data/algs4-data/tinyUF.txt
 !data/algs4-data/mediumUF.txt
-chapter*/main/test.go
+chapter*/main/test*.go
