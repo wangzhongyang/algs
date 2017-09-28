@@ -34,9 +34,12 @@ func (m *MyRand) ShuffleString(args []string) []string {
 // GetIntArray 获取len长度的int数组
 // maxInt 取值范围 len int数组长度
 func (m *MyRand) GetIntArray(maxInt, len int) []int {
-	r, arr := rand.New(rand.NewSource(time.Now().UnixNano())), []int{}
-	for i := 0; i < len; i++ {
-		arr = append(arr, r.Intn(maxInt))
+	r, arr := rand.New(rand.NewSource(time.Now().UnixNano())), make([]int, len)
+	for i := 0; i < len; {
+		if n := int(r.Int63() & letterIdxMask); n < maxInt {
+			arr[i] = n
+			i++
+		}
 	}
 	return arr
 }
