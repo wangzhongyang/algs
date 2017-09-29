@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-// 数组实现的二叉堆
+// 数组实现的二叉堆 及优先队列
 type MaxPQWithArray struct {
 	Array []string
 	Len   int
