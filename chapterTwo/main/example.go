@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"myError"
 	"readFile"
+	"strconv"
 )
 
 func main() {
@@ -26,8 +27,13 @@ func Sort(args *[]string) {
 }
 
 // Less
-func Less(p, q string) bool {
-	return !(p > q)
+func Less(p, q string) bool { // 此处若为数值转为的String，"55"比"7"小
+	if a, err := strconv.Atoi(p); err == nil {
+		b, _ := strconv.Atoi(q)
+		return !(a > b)
+	} else {
+		return !(p > q)
+	}
 }
 
 // Exch
