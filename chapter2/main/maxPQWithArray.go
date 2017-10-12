@@ -6,18 +6,31 @@ import (
 	"strconv"
 )
 
-// 数组实现的二叉堆 及优先队列
+// 数组实现的二叉堆 及优先队列 由大到小
 type MaxPQWithArray struct {
 	Array []string
 	Len   int
 }
 
 func main() {
+	m, arr := NewMaxPQWithArray(), []int{}
+	m.Max(arr)
+}
+
+// NewMaxPQWithArray
+func NewMaxPQWithArray() *MaxPQWithArray {
+	return &MaxPQWithArray{}
+}
+
+// Max 由大到小实现优先队列
+func (m *MaxPQWithArray) Max(arrInt []int) {
 	m, maxType := NewMaxPQWithArray(), MaxPQWithArray{
 		Array: []string{""},
 		Len:   0,
 	}
-	arrInt := myRand.New().GetIntArray(1000, 20)
+	if len(arrInt) == 0 {
+		arrInt = myRand.New().GetIntArray(1000, 20)
+	}
 	fmt.Println(arrInt)
 	for _, v := range arrInt {
 		m.Insert(&maxType, strconv.Itoa(v))
@@ -28,11 +41,6 @@ func main() {
 		fmt.Print("max string:		", m.DelMax(&maxType), "	")
 		fmt.Println(maxType)
 	}
-}
-
-// NewMaxPQWithArray
-func NewMaxPQWithArray() *MaxPQWithArray {
-	return &MaxPQWithArray{}
 }
 
 // IsEmpty
